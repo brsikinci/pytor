@@ -13,29 +13,22 @@ def decode(data):
         tokenizedData = data
     token = tokenizedData.popleft()
 
-    if token == "i":
+    if token == ord("i"):
         token = tokenizedData.popleft()
         num = ""
-        while token != "e":
-            num += token
+        while token != ord("e"):
+            num += chr(token)
             token = tokenizedData.popleft()
-        print(num)
         return int(num)
 
-    elif token == "l":
+    elif token == ord("l"):
         token = tokenizedData.popleft()
         list = []
-        while token != "e":
-            tokenizedData.append(token)
+        while token != ord("e"):
+            tokenizedData.appendleft(token)
             list.append(decode(tokenizedData))
             token = tokenizedData.popleft()
         return list
 
-    elif token == "d":
-        token = tokenizedData.popleft()
-        dict = {}
-        while token != "e":
-            tokenizedData.append(token)
 
-
-print(decode(b"i42e"))
+print(decode(b"li43ei-26ee"))
