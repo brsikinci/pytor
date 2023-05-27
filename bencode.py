@@ -6,6 +6,12 @@ def encode(data):
         return b"i" + str(data).encode() + b"e"
     elif isinstance(data, list):
         return b"l" + b"".join(map(encode, data)) + b"e"
+    elif isinstance(data, bytes):
+        return str(len(data)).encode() + b":" + data
+    elif isinstance(data, str):
+        return encode(data.encode())
+    elif isinstance(data, dict):
+        return
 
 
 def decode(data):
