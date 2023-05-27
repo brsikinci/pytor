@@ -4,6 +4,8 @@ from collections import deque
 def encode(data):
     if isinstance(data, int):
         return b"i" + str(data).encode() + b"e"
+    elif isinstance(data, list):
+        return b"l" + b"".join(map(encode, data)) + b"e"
 
 
 def decode(data):
