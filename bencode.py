@@ -29,6 +29,3 @@ def decode(data):
             list.append(decode(tokenizedData))
             token = tokenizedData.popleft()
         return list
-
-
-print(decode(b"li43ei-26ee"))
